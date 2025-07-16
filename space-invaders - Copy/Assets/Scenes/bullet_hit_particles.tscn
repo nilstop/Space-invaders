@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://pdiiff6w8vfq"]
+
+[ext_resource type="Texture2D" uid="uid://c2ceh83dbdk52" path="res://Assets/Sprites/Particle (1).svg" id="1_ibjrd"]
+
+[sub_resource type="Curve" id="Curve_ibjrd"]
+_data = [Vector2(0.0170455, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.704545, 0.808989), -1.33774, -1.33774, 0, 0, Vector2(1, 0), -0.963412, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_24snj"]
+offsets = PackedFloat32Array(0, 0.753333, 1)
+colors = PackedColorArray(1, 1, 1, 0.564706, 1, 1, 1, 0.246667, 1, 1, 1, 0)
+
+[node name="Bullet Hit Particles" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+rotation = -1.5708
+scale = Vector2(2, 2)
+emitting = false
+amount = 4
+texture = ExtResource("1_ibjrd")
+lifetime = 0.46
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+damping_min = 650.0
+damping_max = 650.0
+scale_amount_min = 0.5
+scale_amount_max = 0.65
+scale_amount_curve = SubResource("Curve_ibjrd")
+color_ramp = SubResource("Gradient_24snj")

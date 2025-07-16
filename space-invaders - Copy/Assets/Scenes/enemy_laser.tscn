@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://b10suaxvdhlqk"]
+
+[ext_resource type="Script" uid="uid://c7vir8xw7r45a" path="res://Assets/Scripts/enemy_laser.gd" id="1_abf0u"]
+[ext_resource type="Texture2D" uid="uid://cb4emfkwo3a54" path="res://Assets/Sprites/sheet.svg" id="2_2n208"]
+[ext_resource type="Texture2D" uid="uid://bt40jt3ylxhhd" path="res://Assets/Sprites/BlueParticle.svg" id="3_0m5rv"]
+[ext_resource type="Script" uid="uid://bvvfyhhibllp2" path="res://Assets/Scripts/enemy_laser_collider.gd" id="3_2n208"]
+[ext_resource type="AudioStream" uid="uid://cpvxjhxxlnaoh" path="res://Assets/Sounds/laserShoot (3).wav" id="4_5k7qe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8svx"]
+size = Vector2(20, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_810nr"]
+size = Vector2(20, 57)
+
+[sub_resource type="Curve" id="Curve_5k7qe"]
+_data = [Vector2(0.238636, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2n208"]
+offsets = PackedFloat32Array(0, 0.12, 0.433333, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Enemy_Laser" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_abf0u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_e8svx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_2n208")
+
+[node name="Enemy_Laser" type="Area2D" parent="."]
+script = ExtResource("3_2n208")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Laser"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_810nr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+texture = ExtResource("3_0m5rv")
+lifetime = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(4.55, 29.895)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 170.0
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+scale_amount_min = 0.07
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_5k7qe")
+color_ramp = SubResource("Gradient_2n208")
+
+[node name="ShootSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5k7qe")
+volume_db = -20.0
+autoplay = true
+
+[node name="Death" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="area_entered" from="Enemy_Laser" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://hshtaaqeat5u"]
+
+[ext_resource type="Texture2D" uid="uid://b4k4woofe1rf3" path="res://Assets/Sprites/Space Shooter/PNG/Lasers/laserRed01.png" id="1_boik5"]
+[ext_resource type="Script" uid="uid://dkd8bfswkblam" path="res://Assets/Scripts/laser.gd" id="1_trh5x"]
+[ext_resource type="Script" uid="uid://dn60n716b64l6" path="res://Assets/Scripts/area_2d.gd" id="3_e8svx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8svx"]
+size = Vector2(14, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_810nr"]
+size = Vector2(14, 48)
+
+[node name="Laser" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_trh5x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e8svx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_boik5")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_e8svx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_810nr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

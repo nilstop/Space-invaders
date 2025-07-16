@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf5gr2svcmyvm"
+path="res://.godot/imported/sfx_zap.ogg-670eeeeee3f83484f3bf4f201d9c89b4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sprites/Space Shooter/Bonus/sfx_zap.ogg"
+dest_files=["res://.godot/imported/sfx_zap.ogg-670eeeeee3f83484f3bf4f201d9c89b4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=3 uid="uid://ow2hdcepdioi"]
+
+[ext_resource type="Script" uid="uid://c8xx6fjre0lrw" path="res://Assets/Scripts/level_complete.gd" id="1_41isf"]
+[ext_resource type="FontFile" uid="uid://cs472trie728e" path="res://Assets/Fonts/JotiOne-Regular.ttf" id="1_sxtul"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp64j"]
+bg_color = Color(0.800414, 0.221856, 0.222369, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.43, 0.1118, 0.1118, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_yalfk"]
+Panel/styles/panel = SubResource("StyleBoxFlat_wp64j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxtul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jia4s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvwna"]
+bg_color = Color(0.973561, 0.541842, 0.509454, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.431373, 0.109804, 0.109804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjgpd"]
+bg_color = Color(0.936073, 0.366614, 0.346111, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.431373, 0.109804, 0.109804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xmsg"]
+bg_color = Color(0.936073, 0.366614, 0.346111, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.431373, 0.109804, 0.109804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_63p37"]
+Button/styles/focus = SubResource("StyleBoxEmpty_jia4s")
+Button/styles/hover = SubResource("StyleBoxFlat_xvwna")
+Button/styles/normal = SubResource("StyleBoxFlat_qjgpd")
+Button/styles/pressed = SubResource("StyleBoxFlat_8xmsg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yalfk"]
+bg_color = Color(0.913075, 0.31293, 0.30034, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.431373, 0.109804, 0.109804, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_sxtul"]
+Panel/styles/panel = SubResource("StyleBoxFlat_yalfk")
+
+[node name="Level Complete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_41isf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 137.0
+offset_top = 355.0
+offset_right = -137.0
+offset_bottom = -316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yalfk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Time: 1s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 54
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sxtul")
+
+[node name="Next" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_63p37")
+theme_override_fonts/font = ExtResource("1_sxtul")
+theme_override_font_sizes/font_size = 36
+text = "Next Level"
+
+[node name="Main Menu" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_63p37")
+theme_override_fonts/font = ExtResource("1_sxtul")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 177.0
+offset_top = 312.0
+offset_right = -177.0
+offset_bottom = -662.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_sxtul")
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.431373, 0.109804, 0.109804, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("1_sxtul")
+theme_override_font_sizes/font_size = 49
+text = "Level Complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Anim" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="timeout" from="Anim" to="." method="_on_anim_timeout"]

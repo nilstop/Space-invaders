@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://juikjdd1tpxd"]
+
+[ext_resource type="PackedScene" uid="uid://bvqtiv43inlen" path="res://Assets/Scenes/ship.tscn" id="1_0pjst"]
+[ext_resource type="Script" uid="uid://ckbvl8lofm5a6" path="res://Assets/Scripts/world.gd" id="1_8wsfj"]
+[ext_resource type="AudioStream" uid="uid://q7biyas3e5b6" path="res://Assets/Sounds/laserShoot.wav" id="4_uc036"]
+[ext_resource type="AudioStream" uid="uid://brktvouaoyjvc" path="res://Assets/Sounds/8-bit_mechanical_complex.mp3" id="5_dv8ie"]
+[ext_resource type="PackedScene" uid="uid://b1bymi3u15lwo" path="res://Assets/Scenes/game_over_screen.tscn" id="5_pfv4s"]
+[ext_resource type="PackedScene" uid="uid://ow2hdcepdioi" path="res://Assets/Scenes/level_complete.tscn" id="6_31mi3"]
+[ext_resource type="PackedScene" uid="uid://cmhfepibwytgk" path="res://Assets/Scenes/bg_particles.tscn" id="6_pfv4s"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_8wsfj")
+
+[node name="Ship" parent="." instance=ExtResource("1_0pjst")]
+position = Vector2(388, 1010)
+
+[node name="ShootSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uc036")
+volume_db = -20.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dv8ie")
+volume_db = -20.0
+autoplay = true
+
+[node name="Game Over Screen" parent="." instance=ExtResource("5_pfv4s")]
+visible = false
+
+[node name="Level Complete" parent="." instance=ExtResource("6_31mi3")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 800.0
+offset_bottom = 1080.0
+
+[node name="BG Particles" parent="." instance=ExtResource("6_pfv4s")]
+
+[node name="Menu Animation" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Menu Animation" to="Game Over Screen" method="_on_game_over_animation_timeout"]
+[connection signal="timeout" from="Menu Animation" to="Level Complete" method="_on_menu_animation_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

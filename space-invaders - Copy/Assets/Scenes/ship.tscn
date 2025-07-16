@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvqtiv43inlen"]
+
+[ext_resource type="Script" uid="uid://qdbm5fwslpv5" path="res://Assets/Scripts/ship.gd" id="1_3swsu"]
+[ext_resource type="Texture2D" uid="uid://clskdanhmfy4h" path="res://Assets/Sprites/Space Shooter/PNG/playerShip2_orange.png" id="1_t3eoa"]
+[ext_resource type="Texture2D" uid="uid://c2ceh83dbdk52" path="res://Assets/Sprites/Particle (1).svg" id="3_46m3m"]
+[ext_resource type="AudioStream" uid="uid://b368phbgdebsn" path="res://Assets/Sounds/explosion (2).wav" id="4_6fudc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwdhg"]
+size = Vector2(66, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46m3m"]
+size = Vector2(66, 40)
+
+[sub_resource type="Curve" id="Curve_46m3m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.539326), -0.988764, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6fudc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Ship" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_3swsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_t3eoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cwdhg")
+
+[node name="Shoot" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
+
+[node name="Light" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Particle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -37)
+scale = Vector2(0.676923, 0.676923)
+texture = ExtResource("3_46m3m")
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("RectangleShape2D_46m3m")
+
+[node name="Death Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = ExtResource("3_46m3m")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 141.82
+gravity = Vector2(0, 375.225)
+initial_velocity_min = 45.4
+initial_velocity_max = 597.7
+scale_amount_min = 0.3
+scale_amount_curve = SubResource("Curve_46m3m")
+color_ramp = SubResource("Gradient_6fudc")
+
+[node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6fudc")
+volume_db = -5.0
+
+[connection signal="timeout" from="Shoot" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Light" to="." method="_on_light_timeout"]
+[connection signal="area_entered" from="Collision" to="." method="_on_collision_area_entered"]

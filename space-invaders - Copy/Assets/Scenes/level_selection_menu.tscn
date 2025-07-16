@@ -1,0 +1,198 @@
+[gd_scene load_steps=10 format=3 uid="uid://ilugpk10h7jr"]
+
+[ext_resource type="Script" uid="uid://bbjaccihf8bfd" path="res://Assets/Scripts/level_selection_menu.gd" id="1_5urgp"]
+[ext_resource type="FontFile" uid="uid://cs472trie728e" path="res://Assets/Fonts/JotiOne-Regular.ttf" id="1_h3njd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3u8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3njd"]
+bg_color = Color(0.969685, 0.465882, 0.443413, 1)
+border_width_bottom = 10
+border_color = Color(0.556032, 0.114898, 0.131907, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3u8d"]
+bg_color = Color(0.947589, 0.362267, 0.351999, 1)
+border_width_bottom = 10
+border_color = Color(0.556032, 0.114898, 0.131907, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5urgp"]
+bg_color = Color(0.947589, 0.362267, 0.351999, 1)
+border_color = Color(0.556032, 0.114898, 0.131907, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_h3njd"]
+Button/styles/focus = SubResource("StyleBoxEmpty_v3u8d")
+Button/styles/hover = SubResource("StyleBoxFlat_h3njd")
+Button/styles/normal = SubResource("StyleBoxFlat_v3u8d")
+Button/styles/pressed = SubResource("StyleBoxFlat_5urgp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5urgp"]
+
+[sub_resource type="Theme" id="Theme_wi4br"]
+Button/styles/focus = SubResource("StyleBoxEmpty_5urgp")
+Button/styles/hover = SubResource("StyleBoxFlat_h3njd")
+Button/styles/normal = SubResource("StyleBoxFlat_v3u8d")
+Button/styles/pressed = SubResource("StyleBoxFlat_5urgp")
+
+[node name="Level Selection Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5urgp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Select Level Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_h3njd")
+theme_override_font_sizes/font_size = 55
+text = "Select Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 135
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 33
+alignment = 1
+
+[node name="Level1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "1
+"
+
+[node name="Level2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "2
+"
+
+[node name="Level3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 33
+alignment = 1
+
+[node name="Level4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "4"
+
+[node name="Level5" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "5"
+
+[node name="Level6" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "6
+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 33
+alignment = 1
+
+[node name="Level7" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "7"
+
+[node name="Level8" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "8"
+
+[node name="Level9" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_h3njd")
+theme_override_font_sizes/font_size = 57
+text = "9"
+
+[node name="Completed Levels" type="Label" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 980.0
+offset_right = 700.0
+offset_bottom = 1043.0
+theme_override_fonts/font = ExtResource("1_h3njd")
+theme_override_font_sizes/font_size = 46
+text = "Completed: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 976.0
+offset_right = 151.22
+offset_bottom = 1049.93
+theme = SubResource("Theme_wi4br")
+theme_override_fonts/font = ExtResource("1_h3njd")
+theme_override_font_sizes/font_size = 42
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Level8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Level9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

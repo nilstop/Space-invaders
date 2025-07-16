@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmhfepibwytgk"]
+
+[ext_resource type="Texture2D" uid="uid://bl6vxuylihjvb" path="res://Assets/Sprites/drawing.svg" id="1_e18g2"]
+
+[sub_resource type="Gradient" id="Gradient_5qxya"]
+offsets = PackedFloat32Array(0, 0.146667, 0.32, 0.493333, 0.686667, 0.84, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.552941, 1, 1, 1, 0.639216, 1, 1, 1, 0.631373, 1, 1, 1, 0.486275, 1, 1, 1, 0.592157, 1, 1, 1, 0)
+
+[node name="BG Particles" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(402, -42)
+amount = 120
+texture = ExtResource("1_e18g2")
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 300)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 350.0
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_5qxya")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnl0i3efq02iq"]
+
+[ext_resource type="Script" uid="uid://bfcxj3q0b23n5" path="res://Assets/Scripts/shoot_particles.gd" id="1_8q3c5"]
+[ext_resource type="Texture2D" uid="uid://blerxqhxjg38g" path="res://Assets/Sprites/Particle2 (3).svg" id="1_u4vcr"]
+
+[sub_resource type="Curve" id="Curve_gpv16"]
+_data = [Vector2(0, 0.674157), 0.0, 3.91209, 0, 0, Vector2(0.140449, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.353933, 1), -0.339314, -0.339314, 0, 0, Vector2(0.674157, 0.978022), 0.0, 0.0, 0, 0, Vector2(1, 0.021978), -2.20728, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_htkfd"]
+offsets = PackedFloat32Array(0, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0866666, 1, 1, 1, 0)
+
+[node name="Shoot Particles" type="Node2D"]
+script = ExtResource("1_8q3c5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+rotation = -1.57079
+emitting = false
+amount = 5
+texture = ExtResource("1_u4vcr")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+particle_flag_align_y = true
+spread = 6.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 518.7
+initial_velocity_max = 1105.4
+damping_min = 1551.53
+damping_max = 1551.53
+scale_amount_min = 0.18
+scale_amount_max = 0.48
+scale_amount_curve = SubResource("Curve_gpv16")
+color_ramp = SubResource("Gradient_htkfd")

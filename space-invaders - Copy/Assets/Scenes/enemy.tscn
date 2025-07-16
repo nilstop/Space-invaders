@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://deqnpwc6k8cmj"]
+
+[ext_resource type="Texture2D" uid="uid://butegj3248fud" path="res://Assets/Sprites/Space Shooter/PNG/Enemies/enemyBlack2.png" id="1_atlr2"]
+[ext_resource type="Script" uid="uid://cbcpqhngi5rky" path="res://Assets/Scripts/enemy.gd" id="1_e2b7p"]
+[ext_resource type="Texture2D" uid="uid://cl4ops2l4i41b" path="res://Assets/Sprites/Space Shooter/PNG/Enemies/enemyBlue1.png" id="3_4870b"]
+[ext_resource type="AudioStream" uid="uid://bba7xj4wo387m" path="res://Assets/Sounds/explosion (1).wav" id="4_4ye20"]
+[ext_resource type="AudioStream" uid="uid://cf3mwx1vitl2x" path="res://Assets/Sounds/Enemyhit.wav" id="4_4870b"]
+[ext_resource type="Texture2D" uid="uid://bt40jt3ylxhhd" path="res://Assets/Sprites/BlueParticle.svg" id="6_ps6h4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
+size = Vector2(68, 62)
+
+[sub_resource type="Gradient" id="Gradient_2g0jp"]
+offsets = PackedFloat32Array(0, 0.94, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.179817, 1, 1, 1, 0.00784314)
+
+[sub_resource type="Curve" id="Curve_7eluu"]
+_data = [Vector2(0, 0.674157), 0.0, 3.91209, 0, 0, Vector2(0.140449, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.875, 0.876405), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_o3fyi"]
+offsets = PackedFloat32Array(0, 0.686667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.0866666, 1, 1, 1, 0)
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_e2b7p")
+default_text = ExtResource("1_atlr2")
+shooter_text = ExtResource("3_4870b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_e2b7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.809, 0.809)
+texture = ExtResource("1_atlr2")
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4870b")
+volume_db = -15.0
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4ye20")
+volume_db = -20.0
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 728.055)
+initial_velocity_min = 264.69
+initial_velocity_max = 828.29
+scale_amount_min = 3.0
+scale_amount_max = 30.0
+color_ramp = SubResource("Gradient_2g0jp")
+
+[node name="Move Down Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ShootParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 23)
+rotation = -1.57079
+emitting = false
+texture = ExtResource("6_ps6h4")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector2(-1, 0)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 700.0
+damping_min = 1000.0
+damping_max = 1551.53
+scale_amount_min = 0.18
+scale_amount_max = 0.48
+scale_amount_curve = SubResource("Curve_7eluu")
+color_ramp = SubResource("Gradient_o3fyi")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="Move Down Timer" to="." method="_on_move_down_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
